@@ -1,8 +1,8 @@
+dotenv.config()
 const express = require('express')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const cors = require('cors')
-dotenv.config()
 
 const authRouter = require('./routes/auth') 
 const userRouter = require('./routes/user') 
@@ -17,9 +17,8 @@ const {
 
 const app = express()
 
-
 // mongodb
-mongoose.connect("mongodb+srv://zainforgeeks:zVbJwyU2OxuCcEL8@cluster0.0yycj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
+mongoose.connect(process.env.MONGO_URL, {
   useUnifiedTopology: true,
   useNewUrlParser: true
 }).then(() => console.log("Connected to database"))
